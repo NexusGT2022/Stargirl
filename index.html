@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: ASSU</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: maroon;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .envelope {
+            width: 320px;
+            height: 220px;
+            background-color:maroon;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            transition: height 0.5s ease;
+        }
+
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 320px;
+            height: 110px;
+            background-color:crimson;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+        }
+
+        .envelope.open {
+            height: 300px;
+        }
+
+        .letter {
+            position: absolute;
+            top: 110px;
+            left: 10px;
+            width: 300px;
+            height: 400px; /* Ajusta la altura para que se vea bien al abrirse */
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            overflow-y: auto; /* Permite el desplazamiento en caso de contenido largo */
+        }
+
+        .envelope.open + .letter {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .letter-content {
+            padding: 15px;
+            text-align: center;
+            font-size: 20px; /* Aumenta el tamaño de fuente para mejor legibilidad */
+        }
+
+        .stamp {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 60px;
+            height: 60px;
+            background-color:maroon; /* Color dorado */
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            font-weight: bold;
+            color: maroon;
+            font-size: 14px;
+            border: 2px solid crimson;
+        }
+
+        .address {
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            font-size: 14px;
+            color: white;
+        }
+
+        .address .from {
+            margin-bottom: 10px;
+        }
+
+        .address .to {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="envelope" id="envelope">
+            <div class="stamp"></div>
+            <div class="address">
+                <div class="from">De: Vic</div>
+                <div class="to">Para:</div>
+            </div>
+        </div>
+        <div class="letter" id="letter">
+            <div class="letter-content">
+                <i><p>Querida Katy,No se como empezar esta cartita.
+                    pero dire lo que mi corazon sienta por ti;
+bueno primero que nada, quiero decirte que soy afortunado de que mi corazon te pertenezca 
+desde el ultimo año y 3 meses de nuestras vidas. aunque tuvimos una pequeña pausa para reflexionar de 
+nuestra relacion y ahora que pudimos perdonarnos despues de tantos problemas...aqui estamos, yo estoy para
+quedarme en tu corazon, seguir siendo ese niño (algo romantico y demasiado calenturiento que te ama con el corazon y 
+con su alma) yo no quiero a otra mujer, yo te quiero a ti. yo quiero a katia cristell suarez ramon, actualmente mi novia,
+en unos años legalmente mi futura esposa y madre de kate y victor ponce suarez<3 
+    quiero estar en tu vida por mucho tiempo, quiero amarte por toda la eternidad. quiero que seas
+    la mujer de mis sueños y de mis pensamientos 24-7, verte despertar cada mañana y prepararte el desayuno a ti y a los 
+    niños. <br>
+    ser la familia ponce suarez, y ser una familia feliz.
+    en nuestra luna de miel quiero llevarte a algun lugar bonito en el mundo
+    hacer realidad tus sueños, nuestra casa tendra una gran estanteria para que mi bb(tu) tengas tus libros 
+    en un lugar y comprarte libros que te gusten y leerlos juntos con una taza de cafe bajo la lluvia...
+    bueno me desvie mucho de tema, lo que quiero decir es que.
+    quiero que tu...<br>
+    niña de ojitos cafes color capucchino de caramelo sea mi legitima esposa 
+    estare para ti en las buenas y en las malas, en la salud y en la enfermedad.
+    hasta que la muerte nos separe
+    acepto ser tu legitimo esposo
+    te amare hasta que mi corazon, de su ultimo latido dictando tu nombre,
+    y mi ultimo aliento sea el ultimo te amo en este mundo<3
+        te esperaria en el mas alla para seguir amandonos por toda la eternidad
+
+
+        <br>
+Con todo mi cariño y amor:
+        <br>
+Victor Ponce Zapata<3
+    tu futuro esposo ★
+
+</p
+    ></i>
+                </div>
+        </div>
+    </div>
+    <script>
+        // Crear el fondo negro
+document.body.style.backgroundColor = 'black';
+document.body.style.margin = '0';
+document.body.style.overflow = 'hidden'; // Evitar scroll
+
+const numEstrellas = 100; // Número de estrellas
+
+// Crear estrellas
+for (let i = 0; i < numEstrellas; i++) {
+    const estrella = document.createElement('div');
+    const tamaño = Math.random() * 3; // Tamaño aleatorio de la estrella
+
+    // Establecer estilos para las estrellas
+    estrella.style.width = `${tamaño}px`;
+    estrella.style.height = `${tamaño}px`;
+    estrella.style.backgroundColor = 'white';
+    estrella.style.position = 'absolute';
+    estrella.style.borderRadius = '50%';
+
+    // Posición aleatoria en la ventana
+    estrella.style.top = `${Math.random() * window.innerHeight}px`;
+    estrella.style.left = `${Math.random() * window.innerWidth}px`;
+
+    // Añadir estrella al documento
+    document.body.appendChild(estrella);
+
+    // Animar el parpadeo de las estrellas
+    (function animarEstrella(estrella) {
+        estrella.style.opacity = Math.random();
+        setTimeout(() => animarEstrella(estrella), Math.random() * 1000 + 500); // Parpadeo aleatorio
+    })(estrella);
+}
+    </script>
+    <script>
+    document.getElementById('envelope').addEventListener('click', function() {
+            this.classList.toggle('open');
+        });
+    </script>
+
+        
+
+</body>
+</html>
